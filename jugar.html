@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jugar - Genio Aventureros</title>
+
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="jugar.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="Kiro_logo.ico">
+</head>
+<body>
+
+<div class="banner-superior">
+    <img src="header (1).png" alt="Genio Aventureros">
+</div>
+
+<header class="header">
+    <nav class="menu">
+        <a href="index.html">🏠 Inicio</a>
+        <a href="cuentos.html">📖 Cuentos</a>
+        <a href="actividades.html">✏️ Actividades</a>
+        <a href="logros.html">🏆 Logros</a>
+        <a href="nosotros.html">👦 Nosotros</a>
+        <a href="historia-kiro.html">💙Historia de Kiro</a>
+    </nav>
+
+    <a href="jugar.html" class="btn-login">
+        Jugar
+    </a>
+</header>
+
+<h1 class="titulo-seccion">🎮 ¡A jugar con Kiro!</h1>
+<p class="jugar-subtitulo">Haz clic en el juego para empezar. También puedes usar un control de Xbox.</p>
+
+<section class="jugar-seccion">
+
+    <div class="juego-marco" id="juego-marco">
+        <iframe id="juego" src="juego/index.html" title="Genios Aventureros - juego"
+                allow="fullscreen; gamepad; autoplay" allowfullscreen></iframe>
+
+        <div class="juego-flotante">
+            <button type="button" class="btn-control" data-accion="pantalla">🗗 Salir</button>
+        </div>
+    </div>
+
+    <div class="juego-controles">
+        <button type="button" class="btn-control" id="btn-pantalla" data-accion="pantalla">⛶ Pantalla completa</button>
+        <button type="button" class="btn-control" id="btn-reiniciar" data-accion="reiniciar">🔄 Reiniciar juego</button>
+    </div>
+
+    <p class="jugar-ayuda">Para salir de la pantalla completa pulsa <strong>Esc</strong>.</p>
+    <p class="jugar-aviso" id="aviso-fs">Tu navegador no permite la pantalla completa aquí. Prueba con Chrome, Edge o Firefox.</p>
+
+</section>
+
+<div class="footer-amarillo">
+
+    <img src="footer p (1).png" alt="Footer" class="footer-banner">
+
+    <div class="redes-footer">
+        <a href="https://www.instagram.com/genios.aventureros.26/" target="_blank" rel="noopener noreferrer">
+            <img src="instagram_genios.png" alt="Instagram">
+            <span>Instagram</span>
+        </a>
+        <a href="https://www.tiktok.com/@genios_aventureros.26" target="_blank" rel="noopener noreferrer">
+            <img src="tiktok_genios.png" alt="TikTok">
+            <span>TikTok</span>
+        </a>
+    </div>
+</div>
+
+<script>
+(function () {
+    var marco = document.getElementById('juego-marco');
+    var visor = document.getElementById('juego');
+
+    function enPantallaCompleta() {
+        return document.fullscreenElement || document.webkitFullscreenElement;
+    }
+
+    function alternarPantalla() {
+        if (enPantallaCompleta()) {
+            (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+            return;
+        }
+        var pedir = marco.requestFullscreen || marco.webkitRequestFullscreen;
+        if (!pedir) { document.getElementById('aviso-fs').style.display = 'block'; return; }
+        var r = pedir.call(marco);
+        if (r && r.catch) r.catch(function () { document.getElementById('aviso-fs').style.display = 'block'; });
+    }
+
+    function actualizarBotonPantalla() {
+        document.getElementById('btn-pantalla').textContent = enPantallaCompleta() ? '🗗 Salir de pantalla completa' : '⛶ Pantalla completa';
+    }
+
+    document.addEventListener('click', function (e) {
+        var b = e.target.closest('[data-accion]');
+        if (!b) return;
+        var a = b.getAttribute('data-accion');
+        if (a === 'pantalla') alternarPantalla();
+        else if (a === 'reiniciar') { visor.src = visor.src; }
+    });
+
+    document.addEventListener('fullscreenchange', actualizarBotonPantalla);
+    document.addEventListener('webkitfullscreenchange', actualizarBotonPantalla);
+
+})();
+</script>
+
+</body>
+</html>

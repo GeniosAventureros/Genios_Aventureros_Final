@@ -1,0 +1,38 @@
+.jugar-seccion { max-width: 1100px; margin: 0 auto 40px; padding: 0 16px; font-family: 'Fredoka', sans-serif; }
+.jugar-subtitulo { text-align: center; color: #555; font-size: 20px; margin: -20px 0 24px; }
+
+.juego-marco {
+    position: relative; background: #040218; border: 6px solid #512BD4; border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(81, 43, 212, .35); overflow: hidden;
+    aspect-ratio: 16 / 9; width: 100%;
+}
+.juego-marco iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+
+.juego-marco:fullscreen { border: 0; border-radius: 0; aspect-ratio: auto; box-shadow: none; width: 100vw; height: 100vh; }
+.juego-marco:-webkit-full-screen { border: 0; border-radius: 0; aspect-ratio: auto; width: 100vw; height: 100vh; }
+
+.juego-controles { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-top: 18px; }
+.btn-control {
+    font-family: 'Fredoka', sans-serif; font-size: 18px; font-weight: 700; color: #222;
+    background: #FDB813; border: none; border-radius: 30px; padding: 12px 26px; cursor: pointer;
+    transition: .2s; display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-control:hover, .btn-control:focus-visible { background: #FF9800; transform: scale(1.05); outline: none; }
+.btn-control[aria-pressed="true"] { background: #512BD4; color: #fff; }
+
+.juego-flotante {
+    position: absolute; right: 14px; bottom: 14px; display: none; gap: 8px; z-index: 5;
+    opacity: .25; transition: opacity .25s;
+}
+.juego-flotante:hover, .juego-flotante:focus-within { opacity: 1; }
+.juego-marco:fullscreen .juego-flotante { display: flex; }
+.juego-marco:-webkit-full-screen .juego-flotante { display: flex; }
+.juego-flotante .btn-control { padding: 8px 16px; font-size: 16px; }
+
+.jugar-ayuda { text-align: center; color: #512BD4; margin-top: 14px; font-size: 16px; }
+.jugar-aviso { text-align: center; background: #FFF3CD; border-radius: 14px; padding: 12px; margin-top: 16px; color: #664d03; display: none; }
+
+@media (max-width: 600px) {
+    .btn-control { width: 100%; justify-content: center; }
+    .juego-marco { border-width: 4px; border-radius: 16px; }
+}

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Genio Aventureros</title>
+
+    <link rel="stylesheet" href="estilos.css">
+
+    <link rel="icon" href="Kiro_logo.ico">
+
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+
+<body>
+    <!-- Burbujas decorativas -->
+<div class="burbujas">
+    <span class="burbuja burbuja-1"></span>
+    <span class="burbuja burbuja-2"></span>
+    <span class="burbuja burbuja-3"></span>
+    <span class="burbuja burbuja-4"></span>
+    <span class="burbuja burbuja-5"></span>
+    <span class="burbuja burbuja-6"></span>
+</div>
+<!-- DECORACIONES -->
+<div class="decoraciones">
+
+    <span class="decoracion estrella estrella-1">⭐</span>
+    <span class="decoracion estrella estrella-2">✨</span>
+    <span class="decoracion estrella estrella-3">⭐</span>
+
+    <span class="decoracion nube nube-1">☁️</span>
+    <span class="decoracion nube nube-2">☁️</span>
+
+    <span class="decoracion lapiz lapiz-1">✏️</span>
+    <span class="decoracion libro libro-1">📚</span>
+
+    <span class="decoracion destello destello-1">✦</span>
+    <span class="decoracion destello destello-2">✦</span>
+
+</div>
+
+<div class="banner-superior">
+    <img src="header (1).png" alt="Genio Aventureros">
+</div>
+
+<!-- Menú -->
+<header class="header">
+
+    <nav class="menu">
+        <a href="index.html">🏠 Inicio</a>
+        <a href="cuentos.html">📖 Cuentos</a>
+        <a href="actividades.html">✏️ Actividades</a>
+        <a href="logros.html">🏆 Logros</a>
+        <a href="nosotros.html">👦 Nosotros</a>
+        <a href="historia-kiro.html">💙Historia de Kiro</a>
+    </nav>
+
+   <a href="jugar.html" class="btn-login">
+    Jugar
+</a>
+
+</header>
+
+
+<!-- Portada -->
+<section class="hero">
+
+    <div class="texto">
+
+        <h1>
+            Aprende, juega <br>
+            y descubre con <br>
+            <span>Genios Aventureros</span>
+        </h1>
+
+        <p>
+            Un mundo de conocimiento, diversión y creatividad donde cada reto te hace más inteligente.
+        </p>
+
+<a href="#tarjetas" class="btn-aventura flecha">↓</a>
+
+    </div>
+
+<div class="carrusel">
+    <button class="anterior" type="button">&#10094;</button>
+
+    <div class="contenedor-slider">
+        <img src="carrusel.1.png" class="slide activo" alt="Primera imagen">
+        <img src="carrusel.2.png" class="slide" alt="Segunda imagen">
+        <img src="carrusel.3.png" class="slide" alt="Tercera imagen">
+        <img src="carrusel.4.png" class="slide" alt="Cuarta imagen">
+        <img src="carrusel.5.png" class="slide" alt="Quinta imagen">
+    </div>
+
+    <button class="siguiente" type="button">&#10095;</button>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const carrusel = document.querySelector(".carrusel");
+    if (!carrusel) return;
+
+    const slides = carrusel.querySelectorAll(".slide");
+    const anterior = carrusel.querySelector(".anterior");
+    const siguiente = carrusel.querySelector(".siguiente");
+
+    let actual = 0;
+    let temporizador;
+
+    function mostrar(indice) {
+        slides[actual].classList.remove("activo");
+        actual = (indice + slides.length) % slides.length;
+        slides[actual].classList.add("activo");
+    }
+
+    function reiniciar() {
+        clearInterval(temporizador);
+        temporizador = setInterval(function () {
+            mostrar(actual + 1);
+        }, 3000);
+    }
+
+    siguiente.addEventListener("click", function () {
+        mostrar(actual + 1);
+        reiniciar();
+    });
+
+    anterior.addEventListener("click", function () {
+        mostrar(actual - 1);
+        reiniciar();
+    });
+
+    reiniciar();
+});
+</script>
+
+</div>
+</section> 
+
+<!-- Tarjetas -->
+<section id="tarjetas" class="tarjetas">
+
+    <a href="cuentos.html" class="tarjeta rosa">
+        <h2>📖 Cuentos</h2>
+        <p>Viaja con tu imaginación.</p>
+    </a>
+
+    <a href="actividades.html" class="tarjeta amarilla">
+        <h2>✏️ Actividades</h2>
+        <p>Desarrolla tu mente.</p>
+    </a>
+
+    <a href="logros.html" class="tarjeta verde">
+        <h2>🏆 Logros</h2>
+        <p>Alcanza nuevas metas y celebra tus avances.</p>
+    </a>
+
+</section>
+<section class="seleccionarnos">
+
+    <div class="seleccionarnos-titulo">
+        <h2>¿Por qué elegir Genio Aventureros?</h2>
+    </div>
+
+    <div class="razones-grid">
+
+        <div class="razon-card razon-amarillo">
+            <div class="razon-icono">🎮</div>
+
+            <div class="razon-texto">
+                <h3>Aprende jugando</h3>
+                <p>Descubre nuevos conocimientos de forma divertida.</p>
+            </div>
+        </div>
+
+        <div class="razon-card razon-azul">
+            <div class="razon-icono">🚀</div>
+
+            <div class="razon-texto">
+                <h3>Explora</h3>
+                <p>Vive aventuras y supera nuevos retos.</p>
+            </div>
+        </div>
+
+        <div class="razon-card razon-verde">
+            <div class="razon-icono">🧠</div>
+
+            <div class="razon-texto">
+                <h3>Desarrolla tus habilidades</h3>
+                <p>Mejora tu creatividad, memoria y pensamiento.</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+<!-- Nosotros -->
+<section class="nosotros">
+
+    <div class="nosotros-texto">
+        <h2>¿Quiénes somos?</h2>
+
+        <p>
+            Genio Aventureros es una plataforma educativa creada para que los niños de primaria aprendan español de una forma divertida mediante cuentos, juegos, actividades y logros.
+        </p>
+
+    </div>
+
+    <div class="nosotros-img">
+        <img src="Niños.png" alt="Niños">
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+
+    <footer class="mi-footer">
+
+    <!-- IMAGEN AMARILLA DEL FOOTER -->
+    <div class="footer-amarillo">
+
+        <img src="footer p (1).png" alt="Footer" class="footer-banner">
+
+        <!-- REDES DENTRO DEL FOOTER AMARILLO -->
+        <div class="redes-footer">
+
+            <a href="https://www.instagram.com/genios.aventureros.26/"
+               target="_blank"
+              rel="noopener noreferrer">
+
+               <img src="instagram_genios.png" alt="Instagram">
+               <span>Instagram</span>
+            </a>
+
+            <a href="https://www.tiktok.com/@genios_aventureros.26"
+               target="_blank"
+               rel="noopener noreferrer">
+
+                <img src="tiktok_genios.png" alt="TikTok">
+                <span>TikTok</span>
+
+            </a>
+
+        </div>
+
+        <!-- PARTE NEGRA -->
+    <div class="footer-bottom">
+
+        <p>© 2026 Genio Aventureros. Todos los derechos reservados.</p>
+
+        <ul class="footer-links">
+            <li><a href="index.html"></a></li>
+        </ul>
+
+    </div>
+
+</footer>
+
+<!-- KIRO INTERACTIVO -->
+<div class="kiro-ayudante" id="kiroAyudante">
+    <div class="kiro-mensaje" id="kiroMensaje" role="status" aria-live="polite">
+        ¡Hola, aventurero! 💙 ¿Qué vamos a aprender hoy?
+    </div>  
+
+    <button
+        class="kiro-boton"
+        id="kiroBoton"
+        type="button"
+        aria-label="Hablar con Kiro"
+        aria-expanded="false"
+    >
+        <img src="kiro saludando .png" alt="Kiro, tu compañero de aventuras">
+        <span class="kiro-indicador">¡Hola Aventurero!</span>
+    </button>
+</div>
+
+
+<script src="script.js"></script>
+
+
+</body>
+</html>
+
+
+
+
